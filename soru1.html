@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        table,
+        th,
+        td {
+          border: 1px solid black;
+          border-collapse: collapse;
+        }
+      </style>
+
+</head>
+<body>
+    <h1>Kişiye Özel Tişört Sipariş Aracı</h1>
+    <hr>
+    <p>Lütfen oluşturmak istediğiniz siparişe ilişkin bilgileri doldurunuz</p>
+
+    <h2>Kişisel Bilgiler</h2>
+    <label for="name">Adınız:</label>
+    <input class="getinfo" type="text" name="name" id="name"><br><br>
+    <label for="surname">Soyadınız:</label>
+    <input class="getinfo" type="text" name="surname" id="surname"><br><br>
+    <label for="birthdate">Doğum Tarihiniz:</label>
+    <input class="getinfo" type="date" name="birthdate" id="birthdate"><br><br>
+    <label for="mail">Mail Adresiniz:</label>
+    <input class="getinfo" type="text" name="mail" id="mail"><br><br>
+    <label for="phone">Telefon:</label>
+    <input class="getinfo" type="text" placeholder="5XX-XXX-XXXX" name="phone" id="phone"><br><br>
+
+    <hr>
+    <h2>Sipariş Bilgileri</h2>
+    <label for="tshirtcolor">Tişört Rengi:</label>
+    <input class="getinfo" type="color" name="tshirtcolor" id="tshirtcolor"><br><br>
+    <label for="fontcolor">Yazı Rengi:</label>
+    <input class="getinfo" type="color" name="fontcolor" id="fontcolor"><br><br>
+    <label for="tshirttext">Tişört Üzerine yazacak yazıyı girin:</label>
+    <input class="getinfo" type="text" name="tshirttext" id="tshirttext"><br><br>
+    <label for="tshirtcount">Tişört Adeti:</label>
+    <input class="getinfo" type="text" name="tshirtcount" id="tshirtcount"><br><br>
+    <label for="sizerange">Beden Seçiniz:</label>
+    <input class="getinfo" type="range" name="sizerange" id="sizerange" min="0" max="5"><br><br>
+    <input class="getinfo" type="submit" id="determinesize" onclick="WriteSize()" value="Seç">
+    <input class="getinfo" type="text" name="size" disabled id="size"><br><br>
+
+    <hr>
+    <h2>Teslimat Bilgileri</h2>
+    <label for="address">Adres:</label>
+    <input class="getinfo" type="text" name="address" id="address"><br><br>
+    <label for="deliverydate">Teslim tarihi için bir aralık seçiniz:</label>
+    <input class="getinfo" type="week" name="deliverydate" id="deliverydate"><br><br>
+    
+
+    <hr>
+    <h2>Ödeme Bilgileri</h2>
+    <label for="cardnamesurname">Ad Soyad:</label>
+    <input class="getinfo" type="text" name="cardnamesurname" id="cardnamesurname"><br><br>
+    <label for="cardnumber">Kart Numarası:</label>
+    <input class="getinfo" type="text" placeholder="XXXX-XXXX-XXXX-XXXX" name="cardnumber" id="cardnumber"><br><br>
+    <label for="expirydate">Son Kullanma Tarihi:</label>
+    <input class="getinfo" type="week" name="expirydate" id="expirydate"><br><br>
+    <label for="cvv">CVV :</label>
+    <input class="getinfo" type="text" name="cvv" id="cvv"><br><br>
+
+    <input type="submit" onclick="WriteTable2()" value="Onayla"><br><br>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="3">SİPARİŞ ONAY</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <th rowspan="5" >Kişisel Bilgiler</th>
+                <td>Ad:</td>
+                <td class="info" id="name_t"></td>       
+            </tr>
+            <tr>
+                <td>Soyad:</td>
+                <td class="info" id="surname_t"></td>
+            </tr>
+            <tr>
+                <td>Doğum Tarihi:</td>
+                <td class="info" id="birthdate_t"></td>
+            </tr>
+            <tr>
+                <td>Mail Adresi:</td>
+                <td class="info" id="mail_t"></td>
+            </tr>
+            <tr>
+                <td>Telefon:</td>
+                <td class="info" id="phone_t"></td>
+            </tr>
+            <tr>
+                <th rowspan="5">Sipariş Bilgileri</th>
+                <td>Tişört Rengi:</td>
+                <td class="info" id="tshirtcolor_t"></td>
+            </tr>
+            <tr>
+                <td>Yazı Rengi:</td>
+                <td class="info" id="fontcolor_t"></td>
+            </tr>
+            <tr>
+                <td>Yazı:</td>
+                <td class="info" id="tshirttext_t"></td>
+            </tr>
+            <tr>
+                <td>Tişört Adeti :</td>
+                <td class="info" id="tshirtcount_t"></td>
+            </tr>
+            <tr>
+                <td>Tişört Bedeni:</td>
+                <td class="info" id="tshirtsize_t"></td>
+            </tr>
+            <tr>
+                <th rowspan="2">Teslimat Bilgileri</th>
+                <td>Adres:</td>
+                <td class="info" id="address_t"></td>
+            </tr>
+            <tr>
+                <td>Teslim Tarihi:</td>
+                <td class="info" id="deliverytime_t"></td>
+            </tr>
+            <tr>
+                <th rowspan="4">Ödeme Bilgileri</th>
+                <td>Ad Soyad</td>
+                <td class="info" id="cardnamesurname_t"></td>
+            </tr>
+            <tr>
+                <td>Kart Numarası:</td>
+                <td class="info" id="cardnumber_t"></td>
+            </tr>
+            <tr>
+                <td>Son Kullanma Tarihi:</td>
+                <td class="info" id="expirytime_t"></td>
+            </tr>
+            <tr>
+                <td>CVV:</td>
+                <td class="info" id="cvv_t"></td>
+            </tr>
+        </tbody>
+    </table>
+
+
+    <script src="soru1.js"></script>
+
+
+    
+    
+</body>
+</html>
